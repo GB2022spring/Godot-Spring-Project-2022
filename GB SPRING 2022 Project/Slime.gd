@@ -9,16 +9,16 @@ var state = State.GROUND
 # var b = "text"
 
 # walk properties
-export var gravity = 5
-export var jump_speed = 200
+export var gravity = 40
+export var jump_speed = 15
 
-export var walk_speed = 1000
-export var ground_deceleration = 10000
-export var ground_acceleration = 5000
-export var ground_friction = 8000
-export var air_deceleration = 10000
-export var air_acceleration = 5000
-export var air_friction = 8000
+export var walk_speed = 10
+export var ground_deceleration = 70
+export var ground_acceleration = 40
+export var ground_friction = 30
+export var air_deceleration = 50
+export var air_acceleration = 30
+export var air_friction = 8
 export var min_cancelable_jump_scalar = 0.1
 
 const JUMP_BUFFER_FRAMES = 12
@@ -150,8 +150,6 @@ func _physics_process(delta):
 		state_air(delta)
 	
 	get_node("Sprite").scale = Vector2(0.17 * x_stretch, 0.17 * y_stretch)
-	#var sprite_height = get_node("Sprite").texture.get_height()
-	#get_node("Sprite").offset = Vector2(0, 0.5*sprite_height * (1-y_stretch))
 	
 	move_and_slide(velocity * delta * 1000, Vector2.UP, true)
 	jump_buffer_count = max(jump_buffer_count - 1, 0)

@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://Scenes/Slime.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Scenes/Ball.tscn" type="PackedScene" id=2]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 187, 11.5 )
@@ -14,6 +15,13 @@ position = Vector2( -19, -1 )
 position = Vector2( 19, 22 )
 shape = SubResource( 1 )
 
+[node name="StaticBody2D" type="StaticBody2D" parent="StaticBody2D"]
+position = Vector2( -19, -1 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D/StaticBody2D"]
+position = Vector2( 39, -122 )
+shape = SubResource( 1 )
+
 [node name="Camera2D" type="Camera2D" parent="."]
 visible = false
 rotation = 3.14159
@@ -22,13 +30,16 @@ current = true
 zoom = Vector2( 0.5, 0.5 )
 
 [node name="Slime" parent="." instance=ExtResource( 1 )]
-position = Vector2( 0, -35 )
+position = Vector2( -21, 5 )
 gravity = 40
 jump_speed = 15
-walk_speed = 10
-ground_deceleration = 70
-ground_acceleration = 40
-ground_friction = 30
+walk_speed = 9
+ground_deceleration = 200
+ground_acceleration = 100
+ground_friction = 70
 air_deceleration = 50
 air_acceleration = 30
 air_friction = 8
+
+[node name="Ball" parent="." instance=ExtResource( 2 )]
+position = Vector2( -88, -77 )
