@@ -22,6 +22,6 @@ current = true
 zoom = Vector2( 0.5, 0.5 )
 
 [node name="Slime" parent="." instance=ExtResource( 1 )]
-position = Vector2( 0, -35 )
+position = Vector2( 18, -60 )
 gravity = 20000
 jump_speed = 9000
